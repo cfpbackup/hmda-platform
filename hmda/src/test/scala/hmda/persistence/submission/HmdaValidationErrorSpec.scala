@@ -105,7 +105,7 @@ class HmdaValidationErrorSpec extends AkkaCassandraPersistenceSpec with ScalaFut
       )
       hmdaValidationError ! PersistHmdaRowValidatedError(submissionId, 1, List(tsError), Some(errorsProbe.ref))
       errorsProbe.expectMessage(HmdaRowValidatedError(1, List(tsError)))
-      val larErrorsWithIndex = Iterator.from(2).zip(larErrors.toIterator)
+      val larErrorsWithIndex = Iterator.from(2).zip(larErrors.iterator)
       larErrorsWithIndex.foreach { errorWithIndex =>
         val index = errorWithIndex._1
         val error = errorWithIndex._2

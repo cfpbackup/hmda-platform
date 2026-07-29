@@ -16,21 +16,17 @@ import akka.stream.scaladsl.{ Sink, Source }
 import scala.concurrent.Future
 import akka.stream.alpakka.s3._
 import com.typesafe.config.ConfigFactory
-import software.amazon.awssdk.auth.credentials.{ AwsBasicCredentials, StaticCredentialsProvider }
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.regions.providers.AwsRegionProvider
-import software.amazon.awssdk.regions.providers._
 import akka.stream.alpakka.s3.ApiVersion.ListBucketVersion2
 import akka.actor.ActorSystem
 
 import scala.concurrent._
 import akka.http.scaladsl.model.ContentTypes
 
-import scala.util.{ Failure, Success, Try }
+import scala.util.{ Failure, Success }
 import akka.http.scaladsl.model.StatusCodes.BadRequest
 import hmda.auth.OAuth2Authorization
-import akka.util.Timeout
-import hmda.util.RealTimeConfig
 
 import scala.concurrent.duration._
 
@@ -124,7 +120,6 @@ private class ProxyHttpApi(log: Logger)(implicit ec: ExecutionContext, system: A
   }
 
   private def retrieveData(path: String): Future[Option[Source[ByteString, NotUsed]]] = {
-    val timeout: Timeout = Timeout(config.getInt("hmda.http.timeout").seconds)
     log.info("retrieving bucket: {}, path: {}", bucket, path)
     S3.download(bucket, path).withAttributes(S3Attributes.settings(s3Settings)).runWith(Sink.head)
       .map(opt => opt.map { case (source, _) => source })

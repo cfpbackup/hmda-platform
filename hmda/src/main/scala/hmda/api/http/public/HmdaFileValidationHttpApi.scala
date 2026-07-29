@@ -174,7 +174,7 @@ private class HmdaFileValidationHttpApi(implicit mat: Materializer) {
     val (lefts, rights) = el.partition(_.isLeft)
     ValidationErrorSummary(
       lefts.map(_.left.get),
-      rights.map(_.right.get).filter(_.isDefined).map(_.get).map(_.map(validationErrorToSummary(_, period)))
+      rights.map(_.toOption.get).filter(_.isDefined).map(_.get).map(_.map(validationErrorToSummary(_, period)))
     )
   }
 
