@@ -62,7 +62,7 @@ class ParserFlowSpec extends WordSpec with MustMatchers {
         .map(ByteString(_))
         .via(parseTsFlow)
         .map(_._1)
-        .map(_.swap.getOrElse)
+        .map(_.left.get)
         .runWith(TestSink.probe[List[ParserValidationError]])
         .request(1)
         .expectNext(List(IncorrectNumberOfFieldsTs("18")))
@@ -84,7 +84,7 @@ class ParserFlowSpec extends WordSpec with MustMatchers {
         .map(ByteString(_))
         .via(parseLarFlow)
         .map(_._1)
-        .map(_.swap.getOrElse)
+        .map(_.left.get)
         .runWith(TestSink.probe[List[ParserValidationError]])
         .request(badLarList.size)
         .expectNextN(

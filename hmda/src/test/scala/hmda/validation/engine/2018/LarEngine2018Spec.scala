@@ -126,7 +126,7 @@ class LarEngine2018Spec extends WordSpec with ScalaCheckPropertyChecks with Must
         val validation =
           checkAll(lar, lar.larIdentifier.LEI, testContext, TsValidationError)
         val errors =
-          validation.leftMap(errors => errors.toList).toEither.swap.getOrElse
+          validation.leftMap(errors => errors.toList).toEither.left.get
         errors must not be empty
       }
     }

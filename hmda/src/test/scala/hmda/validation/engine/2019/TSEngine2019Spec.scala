@@ -39,7 +39,7 @@ class TsEngine2019Spec extends PropSpec with ScalaCheckPropertyChecks with MustM
         val validation =
           checkAll(ts.copy(id = 2, quarter = 2), ts.LEI, testContext, TsValidationError)
         val errors =
-          validation.leftMap(errors => errors.toList).toEither.swap.getOrElse
+          validation.leftMap(errors => errors.toList).toEither.left.get
         errors mustBe
           List(SyntacticalValidationError(ts.LEI, "S300", TsValidationError), ValidityValidationError(ts.LEI, "V602", TsValidationError))
       }

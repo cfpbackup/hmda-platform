@@ -41,7 +41,7 @@ class TsEngine2022SQpec extends PropSpec with ScalaCheckPropertyChecks with Must
       ) {
         val testContext = ValidationContext(None, Some(Period(ts.year, None)))
         val validation  = checkAll(ts.copy(id = 2, quarter = 2), ts.LEI, testContext, TsValidationError)
-        val errors      = validation.leftMap(errors => errors.toList).toEither.swap.getOrElse
+        val errors      = validation.leftMap(errors => errors.toList).toEither.left.get
         errors mustBe List(
           SyntacticalValidationError(ts.LEI, "S300", TsValidationError),
           ValidityValidationError(ts.LEI, "V718", TsValidationError)
