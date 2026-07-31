@@ -154,6 +154,7 @@ private class SignHttpApi(log: Logger, sharding: ClusterSharding)(implicit t: Ti
     transmittalSheet: TransmittalSheet,
   ): Institution = {
     val originalFilerFlag = originalInstOpt.getOrElse(Institution.empty).hmdaFiler
+    val originalQuarterlyFilerFlag = originalInstOpt.getOrElse(Institution.empty).quarterlyFiler
     val originalHasFiledQ1Flag = originalInstOpt.getOrElse(Institution.empty).quarterlyFilerHasFiledQ1
     val originalHasFiledQ2Flag = originalInstOpt.getOrElse(Institution.empty).quarterlyFilerHasFiledQ2
     val originalHasFiledQ3Flag = originalInstOpt.getOrElse(Institution.empty).quarterlyFilerHasFiledQ3
@@ -172,6 +173,7 @@ private class SignHttpApi(log: Logger, sharding: ClusterSharding)(implicit t: Ti
       institutionId_2017 = institutionId_2017Flag,
       emailDomains = emailDomainsFlag,
       hmdaFiler = originalFilerFlag,
+      quarterlyFiler = originalQuarterlyFilerFlag,
       quarterlyFilerHasFiledQ1 = originalHasFiledQ1Flag,
       quarterlyFilerHasFiledQ2 = originalHasFiledQ2Flag,
       quarterlyFilerHasFiledQ3 = originalHasFiledQ3Flag
