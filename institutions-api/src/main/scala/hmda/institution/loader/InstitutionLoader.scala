@@ -15,8 +15,7 @@ import io.circe.syntax._
 import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 import hmda.auth.OAuth2Authorization
-import akka.http.scaladsl.model.headers.{Authorization, OAuth2BearerToken}
-
+ 
 import scala.concurrent.ExecutionContext
 import scala.util.{ Failure, Success }
 // $COVERAGE-OFF$
