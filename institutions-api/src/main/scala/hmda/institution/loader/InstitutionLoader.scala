@@ -15,7 +15,7 @@ import io.circe.syntax._
 import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 import hmda.auth.OAuth2Authorization
- 
+
 import scala.concurrent.ExecutionContext
 import scala.util.{ Failure, Success }
 // $COVERAGE-OFF$
@@ -29,7 +29,7 @@ object InstitutionLoader extends App {
   var notFoundCount   = 0
   var count           = 0
 
-  implicit val system: ActorSystem        = ActorSystem()
+  implicit val system: ActorSystem        = ActorSystem()Ï
   implicit val materializer: Materializer = Materializer(system)
   implicit val ec: ExecutionContext       = system.dispatcher
 
