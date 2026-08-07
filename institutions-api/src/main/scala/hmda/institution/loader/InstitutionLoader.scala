@@ -29,7 +29,7 @@ object InstitutionLoader extends App {
   var notFoundCount   = 0
   var count           = 0
 
-  implicit val system: ActorSystem        = ActorSystem()Ï
+  implicit val system: ActorSystem        = ActorSystem()
   implicit val materializer: Materializer = Materializer(system)
   implicit val ec: ExecutionContext       = system.dispatcher
 
