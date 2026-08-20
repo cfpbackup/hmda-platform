@@ -1,11 +1,11 @@
 package hmda.dataBrowser.api
 
-import akka.actor
-import akka.actor.CoordinatedShutdown
-import akka.actor.typed.scaladsl.Behaviors
-import akka.actor.typed.{ ActorSystem, Behavior, SupervisorStrategy }
-import akka.actor.typed.scaladsl.adapter._
-import akka.http.scaladsl.server.Directives._
+import org.apache.pekko.actor
+import org.apache.pekko.actor.CoordinatedShutdown
+import org.apache.pekko.actor.typed.scaladsl.Behaviors
+import org.apache.pekko.actor.typed.{ ActorSystem, Behavior, SupervisorStrategy }
+import org.apache.pekko.actor.typed.scaladsl.adapter._
+import org.apache.pekko.http.scaladsl.server.Directives._
 import hmda.api.http.directives.HmdaTimeDirectives._
 import hmda.api.http.routes.BaseHttpApi
 import hmda.dataBrowser.Settings
@@ -16,7 +16,7 @@ import io.lettuce.core.{ ClientOptions, RedisClient }
 import monix.eval.Task
 import slick.basic.DatabaseConfig
 import slick.jdbc.JdbcProfile
-import ch.megard.akka.http.cors.scaladsl.CorsDirectives.cors
+import org.apache.pekko.http.cors.scaladsl.CorsDirectives.cors
 
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
