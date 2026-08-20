@@ -1,4 +1,4 @@
-packageName in Docker := "hmda-reporting"
+Docker / packageName := "hmda-reporting"
 
 version in Docker := "latest"
 

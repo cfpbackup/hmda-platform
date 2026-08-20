@@ -1,4 +1,4 @@
-packageName in Docker := "file-proxy"
+Docker / packageName := "file-proxy"
 
 dockerExposedPorts := Vector(9092, 60080)
 
